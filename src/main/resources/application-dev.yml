@@ -1,0 +1,51 @@
+spring:
+  thymeleaf:
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://rokidev.com:5432/postgres
+    username: postgres
+    password: test1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+      jdbc:
+        time_zone: Asia/Seoul
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    generate-ddl: true
+
+logging:
+  level:
+    org.hibernate.SQL: info
+    org.hibernate.type: trace  # 변수값 출력
+    org.hibernate.type:descriptor.sql.BasicBinder: TRACE
+    org.apache.tomcat: info
+    com.yrkim.springsecurity: debug
+    org.springframework.transaction: trace  # 트랜젝션 로그 활성화
+
+config:
+  downloadImage: http://rokidev.com:10082
+  uploadImage: http://rokidev.com:10082
+
+server:
+  compression:
+    enabled: true
+  error:
+    include-exception: true
+    include-stacktrace: always
+    whitelabel:
+      enabled: true
+  tomcat:
+    accesslog:
+      enabled: true
+      directory: logs/
+    basedir: /yrkim_server/logs/tomcat
+    max-http-form-post-size: 50MB
+  servlet:
+    context-path: /
+  port: 9000
